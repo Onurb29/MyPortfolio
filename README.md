@@ -1,4 +1,4 @@
-# MyAspNetStaticStarter
+# MyPortfolio
 
 ASP.NET Core starter for hosting static files from `wwwroot/` plus a tiny API endpoint.
 
@@ -8,7 +8,7 @@ ASP.NET Core starter for hosting static files from `wwwroot/` plus a tiny API en
 
 ## Run
 
-- `dotnet run --project .\MyAspNetStaticStarter.csproj`
+- `dotnet run --project .\MyPortfolio.csproj`
 - Open the printed URL (defaults to `https://localhost:####/`)
 
 ### What’s included
@@ -18,12 +18,12 @@ ASP.NET Core starter for hosting static files from `wwwroot/` plus a tiny API en
 
 ## Build
 
-- `dotnet restore .\MyAspNetStaticStarter.sln`
-- `dotnet build .\MyAspNetStaticStarter.sln -v minimal`
+- `dotnet restore .\MyPortfolio.sln`
+- `dotnet build .\MyPortfolio.sln -v minimal`
 
 ## Test
 
-- `dotnet test .\MyAspNetStaticStarter.sln -v minimal`
+- `dotnet test .\MyPortfolio.sln -v minimal`
 
 ## Notes
 
