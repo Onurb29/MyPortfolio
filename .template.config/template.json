@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "TheAlloyDev",
+  "classifications": [ "Web", "ASP.NET", "Starter" ],
+  "identity": "MyAspNetStaticStarter.Template",
+  "name": "ASP.NET Static Starter",
+  "shortName": "myaspnetstatic",
+  "description": "Starter template for ASP.NET with static assets and opinionated setup.",
+  "sourceName": "MyAspNetStaticStarter",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+
+  "symbols": {
+    "Company": {
+      "type": "parameter",
+      "datatype": "text",
+      "defaultValue": "TheAlloyDev",
+      "replaces": "Contoso",
+      "description": "Company or root namespace prefix (e.g., TheAlloyDev)"
+    }
+  },
+
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            "**/.git/**",
+            "**/.vs/**",
+            "**/bin/**",
+            "**/obj/**",
+            "**/.idea/**",
+            "**/.vscode/**",
+            "**/*.user",
+            "**/*.suo"
+          ]
+        }
+      ]
+    }
+  ],
+
+  "primaryOutputs": [
+    { "path": "./MyAspNetStaticStarter.sln" }
+  ],
+
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages",
+      "manualInstructions": [ { "text": "Run 'dotnet restore'" } ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}

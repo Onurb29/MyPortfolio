@@ -1,0 +1,3 @@
+﻿body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+#fetch-data { padding: 8px 12px; }
+#data-container { margin-top: 16px; padding: 12px; border: 1px solid #ddd; min-height: 24px; }
