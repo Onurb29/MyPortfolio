@@ -1,15 +1,175 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Async JavaScript Lab</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Industrial technology portfolio showcasing technical systems analysis, manufacturing solutions, projects, skills, and contact information."
+  />
+  <meta
+    name="keywords"
+    content="portfolio, industrial technology, systems analyst, manufacturing, MES, SCADA, data analysis, projects"
+  />
+  <meta name="author" content="Jimmy Perron" />
+  <title>Jimmy Perron | Industrial Technology Portfolio</title>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
-  <h1>Async JavaScript Lab</h1>
-  <button id="fetch-data">fetch-data</button>
-  <div id="data-container"></div>
-  <script src="script.js"></script>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container">
+      <h1>Jimmy Perron</h1>
+      <p>Technical Systems Analyst | Industrial Technology | Problem Solver</p>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about-me">About Me</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="about-me" aria-labelledby="about-me-heading">
+      <div class="container">
+        <h2 id="about-me-heading">About Me</h2>
+        <p>
+          I am a technical systems analyst with experience in manufacturing,
+          industrial applications, data analysis, and system support. My work
+          focuses on solving operational problems, improving system reliability,
+          and building practical tools that support production and decision-making.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <h2 id="projects-heading">Projects</h2>
+
+        <article>
+          <h3>Production Monitoring Dashboard</h3>
+          <figure>
+            <img
+              src="/images/project-dashboard.jpg"
+              alt="Screenshot of a production monitoring dashboard showing plant performance metrics and trends"
+            />
+            <figcaption>Dashboard for tracking operational performance.</figcaption>
+          </figure>
+          <p>
+            A reporting tool designed to help users visualize production data,
+            identify bottlenecks, and improve operational awareness.
+          </p>
+        </article>
+
+        <article>
+          <h3>Industrial Data Analysis Tool</h3>
+          <figure>
+            <img
+              src="/images/project-data-tool.jpg"
+              alt="Interface of an industrial data analysis tool used for comparing process values and system data"
+            />
+            <figcaption>Tool for analyzing and comparing plant data.</figcaption>
+          </figure>
+          <p>
+            A technical solution built to support troubleshooting, validate system
+            data, and improve confidence in operational reporting.
+          </p>
+        </article>
+
+        <article>
+          <h3>System Support and Optimization</h3>
+          <figure>
+            <img
+              src="/images/project-optimization.jpg"
+              alt="Illustration representing system optimization, process improvement, and industrial technology support"
+            />
+            <figcaption>Support and optimization for business-critical systems.</figcaption>
+          </figure>
+          <p>
+            Ongoing work focused on improving legacy systems, supporting users,
+            and reducing friction between operations and technology.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <h2 id="skills-heading">Skills</h2>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>SQL</li>
+          <li>Python</li>
+          <li>System Analysis</li>
+          <li>Data Visualization</li>
+          <li>Manufacturing Systems Support</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading">Contact</h2>
+        <form action="#" method="post">
+          <div>
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Jimmy Perron. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
