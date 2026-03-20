@@ -1,34 +1,100 @@
-# MyPortfolio
+# Jimmy Perron — Industrial Systems Portfolio
 
-ASP.NET Core starter for hosting static files from `wwwroot/` plus a tiny API endpoint.
+Portfolio and experimental platform for building and showcasing practical solutions in industrial technology, data analysis, and manufacturing systems.
 
-## Prerequisites
+Built with ASP.NET Core and a custom frontend to demonstrate how software can directly support operations, improve visibility, and reduce friction in production environments.
 
-- .NET SDK (project targets `net9.0`)
+## 🌐 Live Preview
 
-## Run
+> Coming soon
 
-- `dotnet run --project .\MyPortfolio.csproj`
-- Open the printed URL (defaults to `https://localhost:####/`)
+## 🚀 Overview
 
-### What’s included
+This portfolio highlights:
 
-- Static site: `GET /` serves `wwwroot/index.html`
-- Sample API: `GET /api/hello` returns `"Hello World!"`
+- Industrial systems experience (MES, SCADA, data analysis)
+- Real-world problem solving in manufacturing environments
+- Frontend development (HTML, CSS, JavaScript)
+- Backend hosting with ASP.NET Core
 
-## Build
+The goal is simple: build tools and systems that actually help operations run better.
 
-- `dotnet restore .\MyPortfolio.sln`
-- `dotnet build .\MyPortfolio.sln -v minimal`
+## 🧱 Architecture
 
-## Test
+\`\`\`
+ASP.NET Core (Backend)
+├── Serves static frontend (wwwroot/)
+├── Provides API endpoints
+│
+Frontend (HTML/CSS/JS)
+├── Responsive layout
+├── Interactive UI (filtering, lightbox, form validation)
+└── Portfolio content
+\`\`\`
 
-- `dotnet test .\MyPortfolio.sln -v minimal`
+## ⚙️ Features
 
-## Notes
+### Frontend
+- Responsive layout for desktop and mobile
+- Navigation with smooth scrolling
+- Project filtering by category
+- Lightbox modal for project images
+- Contact form with validation
+- CSS Grid-based form layout
 
-- Don’t commit secrets to source control. Prefer environment variables or `dotnet user-secrets` for local development.
+### Backend
+- ASP.NET Core minimal setup
+- Static file hosting (`wwwroot`)
+- Sample API endpoint: `GET /api/hello`
 
-## License
+## 📁 Project Structure
 
-MIT — see [LICENSE](LICENSE).
+\`\`\`
+MyPortfolio/
+├── wwwroot/           # Frontend (HTML, CSS, JS, images)
+├── Program.cs         # ASP.NET Core entry point
+├── MyPortfolio.csproj # Project configuration
+├── tests/             # Unit tests
+├── README.md
+├── CHANGELOG.md
+└── LICENSE
+\`\`\`
+
+## 🛠️ Tech Stack
+
+- **Backend:** ASP.NET Core (.NET 9)
+- **Frontend:** HTML5, CSS3, JavaScript (vanilla)
+- **Architecture:** Static hosting + lightweight API
+- **Version Control:** Git
+
+## ▶️ Getting Started
+
+### Prerequisites
+- .NET SDK (`net9.0`)
+
+### Run locally
+
+\`\`\`bash
+dotnet run --project ./MyPortfolio.csproj
+\`\`\`
+
+Then open: `https://localhost:####/` (check terminal for actual port)
+
+### Build
+
+\`\`\`bash
+dotnet restore ./MyPortfolio.sln
+dotnet build ./MyPortfolio.sln -v minimal
+\`\`\`
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## 📞 Contact
+
+## 📞 Contact
+
+- GitHub: https://github.com/Onurb29
+- LinkedIn: https://www.linkedin.com/in/jimmy-perron-ba9580173/
