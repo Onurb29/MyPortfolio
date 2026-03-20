@@ -13,17 +13,20 @@
   />
   <meta name="author" content="Jimmy Perron" />
   <title>Jimmy Perron | Industrial Technology Portfolio</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header>
+  <header class="site-header">
     <div class="container">
       <h1>Jimmy Perron</h1>
-      <p>Technical Systems Analyst | Industrial Technology | Problem Solver</p>
+      <p class="tagline">Technical Systems Analyst | Industrial Technology | Problem Solver</p>
 
-      <nav aria-label="Main navigation">
+      <button type="button" class="nav-toggle" onclick="toggleNav()">Menu</button>
+
+      <nav id="nav" class="site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="#about-me">About Me</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -35,10 +38,10 @@
   </header>
 
   <main id="main-content">
-    <section id="about-me" aria-labelledby="about-me-heading">
+    <section id="about-me" class="section" aria-labelledby="about-me-heading">
       <div class="container">
         <h2 id="about-me-heading">About Me</h2>
-        <p>
+        <p class="about-text">
           I am a technical systems analyst with experience in manufacturing,
           industrial applications, data analysis, and system support. My work
           focuses on solving operational problems, improving system reliability,
@@ -47,15 +50,23 @@
       </div>
     </section>
 
-    <section id="projects" aria-labelledby="projects-heading">
+    <section id="projects" class="section" aria-labelledby="projects-heading">
       <div class="container">
         <h2 id="projects-heading">Projects</h2>
 
-        <article>
+      <div class="project-filters">
+        <button type="button" class="filter-button" data-category="all">All</button>
+        <button type="button" class="filter-button" data-category="dashboard">Dashboards</button>
+        <button type="button" class="filter-button" data-category="analysis">Analysis</button>
+        <button type="button" class="filter-button" data-category="support">Support</button>
+      </div>
+
+        <article class="project-card project dashboard">
           <h3>Production Monitoring Dashboard</h3>
           <figure>
             <img
-              src="/images/project-dashboard.jpg"
+              class="project-image"
+              src="images/project-dashboard.jpg"
               alt="Screenshot of a production monitoring dashboard showing plant performance metrics and trends"
             />
             <figcaption>Dashboard for tracking operational performance.</figcaption>
@@ -66,11 +77,12 @@
           </p>
         </article>
 
-        <article>
+        <article class="project-card project analysis">
           <h3>Industrial Data Analysis Tool</h3>
           <figure>
             <img
-              src="/images/project-data-tool.jpg"
+              class="project-image"
+              src="images/project-data-tool.jpg"
               alt="Interface of an industrial data analysis tool used for comparing process values and system data"
             />
             <figcaption>Tool for analyzing and comparing plant data.</figcaption>
@@ -81,11 +93,12 @@
           </p>
         </article>
 
-        <article>
+        <article class="project-card project support">
           <h3>System Support and Optimization</h3>
           <figure>
             <img
-              src="/images/project-optimization.jpg"
+              class="project-image"
+              src="images/project-optimization.jpg"
               alt="Illustration representing system optimization, process improvement, and industrial technology support"
             />
             <figcaption>Support and optimization for business-critical systems.</figcaption>
@@ -98,10 +111,10 @@
       </div>
     </section>
 
-    <section id="skills" aria-labelledby="skills-heading">
+    <section id="skills" class="section" aria-labelledby="skills-heading">
       <div class="container">
         <h2 id="skills-heading">Skills</h2>
-        <ul>
+        <ul class="skills-list">
           <li>HTML</li>
           <li>CSS</li>
           <li>JavaScript</li>
@@ -114,11 +127,11 @@
       </div>
     </section>
 
-    <section id="contact" aria-labelledby="contact-heading">
+    <section id="contact" class="section" aria-labelledby="contact-heading">
       <div class="container">
         <h2 id="contact-heading">Contact</h2>
-        <form action="#" method="post">
-          <div>
+        <form id="contact-form" class="contact-form" action="#" method="post">
+          <div class="form-group">
             <label for="name">Full Name</label>
             <input
               type="text"
@@ -129,7 +142,7 @@
             />
           </div>
 
-          <div>
+          <div class="form-group">
             <label for="email">Email Address</label>
             <input
               type="email"
@@ -140,7 +153,7 @@
             />
           </div>
 
-          <div>
+          <div class="form-group">
             <label for="subject">Subject</label>
             <input
               type="text"
@@ -150,7 +163,7 @@
             />
           </div>
 
-          <div>
+          <div class="form-group">
             <label for="message">Message</label>
             <textarea
               id="message"
@@ -166,13 +179,12 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="container">
       <p>&copy; 2026 Jimmy Perron. All rights reserved.</p>
     </div>
   </footer>
+
+  <script src="js/scripts.js"></script>
 </body>
 </html>
-
-#Link to Javascript file
-<script src="/js/scripts.js"></script>

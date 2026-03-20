@@ -5,20 +5,24 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Base typography */
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #f4f6f8;
     color: #102a43;
     line-height: 1.6;
 }
 
+/* Accessibility */
 .skip-link {
     position: absolute;
-    left: -999px;
+    left: -9999px;
 }
+
 .skip-link:focus,
 .skip-link:focus-visible {
     left: 16px;
@@ -38,7 +42,7 @@ body {
     margin: 0 auto;
 }
 
-/* Header and navigation */
+/* Header */
 header,
 .site-header {
     background-color: #1f2933;
@@ -49,7 +53,6 @@ header,
 
 header h1,
 .site-header h1 {
-    margin: 0;
     font-size: 2.4rem;
 }
 
@@ -61,51 +64,79 @@ header p,
     color: #d9e2ec;
 }
 
-nav.site-nav,
+/* Navigation */
+nav,
 .site-nav {
     margin-top: 1.5rem;
 }
 
-nav.site-nav ul,
-.site-nav ul,
-
-nav ul {
+nav ul,
+.site-nav ul {
     list-style: none;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    gap: 0.5rem;
     background-color: #444;
     padding: 10px;
     margin: 0;
 }
 
-nav.site-nav a,
-.site-nav a,
-nav a[aria-current="page"] {
-  color: #fff;
-  background: #2f6f91;
-  border-radius: 4px;
-}
-
-nav.site-nav a:hover,
-nav.site-nav a:focus-visible,
-.site-nav a:hover,
-.site-nav a:focus-visible,
-nav a:hover,
-nav a:focus-visible {
-    background-color: #2f6f91;
-    outline: none;
-}
 nav a,
-nav a:visited {
-  color: #fbfbfb;
+nav a:visited,
+.site-nav a,
+.site-nav a:visited {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.2s ease;
 }
 
 nav a:hover,
 nav a:focus-visible,
-nav a:active {
-  color: #ffffff; /* or your hover contrast color */
-  background-color: #105479;
+nav a:active,
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a:active {
+    color: #ffffff;
+    background-color: #105479;
+}
+.nav-toggle {
+    display: none;
+    margin-top: 1rem;
+    background-color: #2f6f91;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-button {
+    background-color: #d9e2ec;
+    color: #102a43;
+    border: none;
+    padding: 0.65rem 1rem;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filter-button:hover,
+.filter-button:focus-visible {
+    background-color: #bcccdc;
 }
 
 /* General section styling */
@@ -118,13 +149,14 @@ section {
 }
 
 section h2 {
-    margin-top: 0;
     color: #243b53;
     font-size: 1.8rem;
     border-left: 5px solid #2f6f91;
     padding-left: 0.75rem;
+    margin-bottom: 1rem;
 }
 
+/* About */
 #about-me p {
     text-align: left;
     font-size: 1.05rem;
@@ -132,6 +164,7 @@ section h2 {
     margin-top: 1rem;
 }
 
+/* Projects */
 #projects article {
     background-color: #f8fafc;
     border: 1px solid #d9e2ec;
@@ -139,6 +172,7 @@ section h2 {
     padding: 1.25rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #projects article:hover,
@@ -148,10 +182,46 @@ section h2 {
 }
 
 #projects article h3 {
-    margin-top: 0;
     color: #1f2933;
+    margin-bottom: 0.75rem;
 }
 
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(16, 42, 67, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 1000;
+}
+
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+#projects article img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+}
+
+#projects figcaption {
+    margin-bottom: 0.75rem;
+    color: #486581;
+    font-size: 0.95rem;
+}
+
+/* Skills */
 #skills ul {
     list-style: none;
     padding-left: 0;
@@ -170,32 +240,28 @@ section h2 {
     position: absolute;
     left: 0;
     color: #2f6f91;
-    font-size: 1rem;
 }
 
+/* Contact */
 #contact form {
     margin-top: 1.5rem;
 }
 
-#contact .form-group,
 .form-group {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1rem;
+    align-items: center;
     margin-bottom: 1.25rem;
 }
 
-#contact label,
 .form-group label {
-    display: block;
     font-weight: 600;
-    margin-bottom: 0.5rem;
     color: #243b53;
 }
 
-#contact input,
-#contact textarea,
 .form-group input,
-.form-group textarea,
-input,
-textarea {
+.form-group textarea {
     width: 100%;
     padding: 0.85rem;
     border: 1px solid #bcccdc;
@@ -204,16 +270,18 @@ textarea {
     background-color: #ffffff;
 }
 
-#contact input:focus-visible,
-#contact textarea:focus-visible,
 .form-group input:focus-visible,
-.form-group textarea:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
+.form-group textarea:focus-visible {
     outline: 2px solid #2f6f91;
     border-color: #2f6f91;
 }
 
+#contact button {
+    grid-column: 2;
+    justify-self: start;
+}
+
+/* Button */
 button {
     background-color: #2f6f91;
     color: #ffffff;
@@ -229,24 +297,6 @@ button {
 button:hover,
 button:focus-visible {
     background-color: #1f5a78;
-    outline: none;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-    header h1,
-    .site-header h1 {
-        font-size: 2rem;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    section {
-        padding: 1.5rem;
-    }
 }
 
 /* Footer */
@@ -255,4 +305,41 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    header h1,
+    .site-header h1 {
+        font-size: 2rem;
+    }
+
+    .nav-toggle {
+        display: inline-block;
+    }
+
+    .site-nav {
+        display: none;
+    }
+
+    .site-nav.active {
+        display: block;
+    }
+
+    nav ul,
+    .site-nav ul {
+        flex-direction: column;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    .form-group {
+        grid-template-columns: 1fr;
+    }
+
+    #contact button {
+        grid-column: 1;
+    }
 }

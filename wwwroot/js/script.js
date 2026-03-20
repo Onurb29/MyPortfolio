@@ -39,8 +39,11 @@ document.querySelectorAll('.project-image').forEach(image => {
     image.addEventListener('click', function () {
         const modal = document.createElement('div');
         modal.classList.add('modal');
+
         const img = document.createElement('img');
         img.src = this.src;
+        img.alt = this.alt;
+
         modal.appendChild(img);
         document.body.appendChild(modal);
         modal.addEventListener('click', function () {
@@ -51,34 +54,37 @@ document.querySelectorAll('.project-image').forEach(image => {
 
 // Step 5: Add form validation
 // An interactive “Contact” form that gives users feedback on their submission. 
-
 // Form validation for the contact form where fields (name, email, message) are filled out correctly before allowing submission
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    let isValid = true;
+const contactForm = document.getElementById('contact-form');
 
-    if (name === '') {
-        isValid = false;
-        alert('Please enter your name.');
-    }
-    if (email === '' || !validateEmail(email)) {
-        isValid = false;
-        alert('Please enter a valid email address.');
-    }
-    if (message === '') {
-        isValid = false;
-        alert('Please enter your message.');
-    }
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+      let valid = true;
 
-    if (isValid) {
-        // Here you would typically handle the form submission, e.g., send the data to a server
-        alert('Thank you for your message!');
-        this.reset(); // Reset the form
-    }
-});
+        if (name === '') {
+            alert('Please enter your name.');
+            valid = false;
+        }
+        if (email === '' || !validateEmail(email)) {
+            alert('Please enter a valid email address.');
+            valid = false;
+        }
+        if (message === '') {
+            alert('Please enter your message.');
+            valid = false;
+        }
+
+        if (valid) {
+            // Here you would typically handle the form submission, e.g., send the data to a server
+            alert('Thank you for your message!');
+            this.reset(); // Reset the form
+        }
+    });
+}
 
 // Provide real-time feedback using JavaScript to inform users of incorrect or missing input.
 function validateEmail(email) {
