@@ -3,8 +3,15 @@
 // Step 3: Add Interactivity
 // Function to toggle the navigation visibility's menu when the hamburger icon is clicked
 function toggleNav() {
+    console.log('toggleNav called');
     const nav = document.getElementById('nav');
-    nav.classList.toggle('active');
+    console.log('nav element:', nav);
+    if (nav) {
+        nav.classList.toggle('active');
+        console.log('nav classes:', nav.className);
+    } else {
+        console.log('nav element not found');
+    }
 }
 
 //Implementing smooth scrolling behaviour for links in the navigation that reference within the same page

@@ -65,9 +65,13 @@ header p,
 }
 
 /* Navigation */
-nav,
-.site-nav {
+#nav.site-nav {
     margin-top: 1.5rem;
+    display: none !important; /* Hidden by default */
+}
+
+#nav.site-nav.active {
+    display: block !important; /* Show when active class is added */
 }
 
 nav ul,
@@ -103,10 +107,11 @@ nav a:active,
     color: #ffffff;
     background-color: #105479;
 }
+
 .nav-toggle {
-    display: none;
+    display: inline-block;
     margin-top: 1rem;
-    background-color: #2f6f91;
+    background-color: transparent;
     color: #ffffff;
     border: none;
     padding: 0.75rem 1rem;
@@ -114,6 +119,7 @@ nav a:active,
     font: inherit;
     font-weight: 600;
     cursor: pointer;
+    font-size: 1.5rem;
 }
 project-filters {
     display: flex;
@@ -316,14 +322,6 @@ footer {
 
     .nav-toggle {
         display: inline-block;
-    }
-
-    .site-nav {
-        display: none;
-    }
-
-    .site-nav.active {
-        display: block;
     }
 
     nav ul,
