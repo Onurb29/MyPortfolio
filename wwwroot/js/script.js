@@ -1,112 +1,213 @@
-﻿// JavaScript for Portfolio Website
+﻿// Portfolio website interactions
 
-// Step 3: Add Interactivity
-// Function to toggle the navigation visibility's menu when the hamburger icon is clicked
-function toggleNav() {
-    console.log('toggleNav called');
-    const nav = document.getElementById('nav');
-    console.log('nav element:', nav);
-    if (nav) {
-        nav.classList.toggle('active');
-        console.log('nav classes:', nav.className);
-    } else {
-        console.log('nav element not found');
-    }
-}
-
-//Implementing smooth scrolling behaviour for links in the navigation that reference within the same page
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    setupMobileNavigation();
+    setupSmoothScrolling();
+    setupProjectFilters();
+    setupContactFormValidation();
 });
 
-// Step 4: Add interactivity to portfolio sections
-//A filter feature for the project section that allows users to filter projects by category
-document.querySelectorAll('.filter-button').forEach(button => {
-    button.addEventListener('click', function () {
-        const category = this.getAttribute('data-category');
-        document.querySelectorAll('.project').forEach(project => {
-            if (category === 'all' || project.classList.contains(category)) {
-                project.style.display = 'block';
-            } else {
-                project.style.display = 'none';
+function setupMobileNavigation() {
+    const nav = document.getElementById('nav');
+    const menuToggle = document.querySelector('.nav-toggle');
+
+    if (!nav || !menuToggle) {
+        return;
+    }
+
+    menuToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (event) => {
+        const clickTarget = event.target;
+
+        if (!(clickTarget instanceof Element)) {
+            return;
+        }
+
+        const clickedInsideNav = nav.contains(clickTarget);
+        const clickedToggle = menuToggle.contains(clickTarget);
+
+        if (!clickedInsideNav && !clickedToggle && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
+function setupSmoothScrolling() {
+    const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+    internalLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const targetId = link.getAttribute('href');
+
+            if (!targetId || targetId === '#') {
+                return;
+            }
+
+            const targetElement = document.querySelector(targetId);
+
+            if (!targetElement) {
+                return;
+            }
+
+            event.preventDefault();
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            const nav = document.getElementById('nav');
+            const menuToggle = document.querySelector('.nav-toggle');
+            if (nav) {
+                nav.classList.remove('active');
+            }
+            if (menuToggle) {
+                menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
     });
-});
+}
 
-// Implement a lightbox effect for project images that display images in a modal view when clicked
-document.querySelectorAll('.project-image').forEach(image => {
-    image.addEventListener('click', function () {
-        const modal = document.createElement('div');
-        modal.classList.add('modal');
+function setupProjectFilters() {
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const projects = document.querySelectorAll('.project');
 
-        const img = document.createElement('img');
-        img.src = this.src;
-        img.alt = this.alt;
+    if (!filterButtons.length || !projects.length) {
+        return;
+    }
 
-        modal.appendChild(img);
-        document.body.appendChild(modal);
-        modal.addEventListener('click', function () {
-            document.body.removeChild(modal);
+    filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const selectedCategory = button.dataset.category;
+
+            filterButtons.forEach((filterButton) => {
+                filterButton.classList.remove('active');
+                filterButton.setAttribute('aria-pressed', 'false');
+            });
+
+            button.classList.add('active');
+            button.setAttribute('aria-pressed', 'true');
+
+            projects.forEach((project) => {
+                const shouldShow = selectedCategory === 'all' || project.classList.contains(selectedCategory);
+                project.hidden = !shouldShow;
+            });
         });
     });
-});
+}
 
-// Step 5: Add form validation
-// An interactive “Contact” form that gives users feedback on their submission. 
-// Form validation for the contact form where fields (name, email, message) are filled out correctly before allowing submission
-const contactForm = document.getElementById('contact-form');
+function setupContactFormValidation() {
+    const contactForm = document.getElementById('contact-form');
+    const contactStatus = document.getElementById('contact-status');
+    const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+    const formStartTime = Date.now();
 
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-      let valid = true;
+    if (!contactForm) {
+        return;
+    }
 
-        if (name === '') {
-            alert('Please enter your name.');
-            valid = false;
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = {
+            name: getInputValue('name'),
+            email: getInputValue('email'),
+            subject: getInputValue('subject'),
+            message: getInputValue('message'),
+            website: getInputValue('website'),
+            formDurationMs: Date.now() - formStartTime,
+        };
+
+        const errors = validateContactForm(formData);
+
+        if (errors.length) {
+            if (contactStatus) {
+                contactStatus.textContent = errors.join(' ');
+            }
+            return;
         }
-        if (email === '' || !validateEmail(email)) {
-            alert('Please enter a valid email address.');
-            valid = false;
+
+        if (contactStatus) {
+            contactStatus.textContent = 'Sending your message...';
         }
-        if (message === '') {
-            alert('Please enter your message.');
-            valid = false;
+        if (submitButton instanceof HTMLButtonElement) {
+            submitButton.disabled = true;
         }
 
-        if (valid) {
-            // Here you would typically handle the form submission, e.g., send the data to a server
-            alert('Thank you for your message!');
-            this.reset(); // Reset the form
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                const errorBody = await response.json().catch(() => null);
+                const errorMessage =
+                    errorBody?.message ||
+                    errorBody?.detail ||
+                    errorBody?.title ||
+                    'Unable to send message right now.';
+                throw new Error(errorMessage);
+            }
+
+            contactForm.reset();
+            if (contactStatus) {
+                contactStatus.textContent = 'Thanks, your message was sent successfully.';
+            }
+        } catch (error) {
+            if (contactStatus) {
+                contactStatus.textContent = error instanceof Error
+                    ? error.message
+                    : 'Unable to send message right now.';
+            }
+        } finally {
+            if (submitButton instanceof HTMLButtonElement) {
+                submitButton.disabled = false;
+            }
         }
     });
 }
 
-// Provide real-time feedback using JavaScript to inform users of incorrect or missing input.
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-};   
+function getInputValue(inputId) {
+    const input = document.getElementById(inputId);
+    return input ? input.value.trim() : '';
+}
 
-// Step 6: Test and debug
-// Test the website across different browsers and devices to ensure compatibility and responsiveness.
-// Utilize console logs and debugging tools to identify and fix any issues that arise during testing.
-// Use the browser's developer tools to inspect the console for errors.
+function validateContactForm({ name, email, subject, message, website, formDurationMs }) {
+    const errors = [];
 
+    if (!name) {
+        errors.push('Please enter your name.');
+    }
 
+    if (!isValidEmail(email)) {
+        errors.push('Please enter a valid email address.');
+    }
 
+    if (!subject) {
+        errors.push('Please enter a subject.');
+    }
 
+    if (!message) {
+        errors.push('Please enter your message.');
+    }
 
+    if (website) {
+        errors.push('Submission rejected.');
+    }
 
+    if (!Number.isFinite(formDurationMs) || formDurationMs < 1000) {
+        errors.push('Please take a moment before sending.');
+    }
 
+    return errors;
+}
+
+function isValidEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email.toLowerCase());
+}

@@ -1,11 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
- <PropertyGroup>
+  <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>MyPortfolio</AssemblyName>
     <RootNamespace>TheAlloyDev.MyPortfolio</RootNamespace>
+    <UserSecretsId>MyPortfolio-Resend-Local</UserSecretsId>
   </PropertyGroup>
 
   <!-- Prevent the web project from compiling anything under tests/** -->

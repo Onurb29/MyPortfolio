@@ -38,6 +38,9 @@ packages/
 publish/
 
 ## Local secrets (use `dotnet user-secrets` instead)
+appsettings.Development.json
+.env
+.env.*
 secrets.json
 
 ## Node (if you ever add frontend tooling)

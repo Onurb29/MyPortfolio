@@ -87,6 +87,16 @@ dotnet restore ./MyPortfolio.sln
 dotnet build ./MyPortfolio.sln -v minimal
 \`\`\`
 
+### Contact email setup (Resend + user-secrets)
+
+Use user-secrets for local credentials (do not store API keys in `appsettings.json`):
+
+\`\`\`bash
+dotnet user-secrets set "Resend:ApiKey" "..."
+dotnet user-secrets set "Resend:FromEmail" "onboarding@resend.dev"
+dotnet user-secrets set "Resend:ToEmail" "jim.perron@outlook.com"
+\`\`\`
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
