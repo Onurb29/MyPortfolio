@@ -101,9 +101,6 @@ dotnet user-secrets set "Resend:ToEmail" "jim.perron@outlook.com"
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
-## 📞 Contact
-
 ## 📞 Contact
 
 - GitHub: https://github.com/Onurb29
