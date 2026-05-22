@@ -42,6 +42,8 @@ appsettings.Development.json
 .env
 .env.*
 secrets.json
+*.local
+*.secret.*
 
 ## Node (if you ever add frontend tooling)
 node_modules/
