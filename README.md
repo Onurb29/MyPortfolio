@@ -52,7 +52,9 @@ In the Pages project's **Settings → Variables and Secrets**, configure these P
 
 Keep the Pages project root at the repository root and output directory at `wwwroot` so Cloudflare discovers `functions/`. `_routes.json` limits function execution to the contact endpoint. A GET to `/api/contact` reports `available: true` when all settings are present; it does not validate the key or send email. Missing settings produce an honest error and preserve the visitor's message. Tests mock Resend and never send real emails.
 
-The function validates input, limits request size, checks browser origin, and includes a honeypot and timing check. These are basic spam controls, not a distributed rate limit. Cloudflare rate limiting or Turnstile can be added if needed. Do not copy production email credentials into preview environments unless preview email delivery is intended.
+The function validates input, limits request size, checks browser origin, and includes a honeypot, timing check, and bounded per-isolate throttling. Turnstile verification is implemented and activates when its keys are configured. A Cloudflare edge rate-limit rule still needs account configuration. See [security setup](docs/SECURITY.md) for the exact steps and limitations. Do not copy production email credentials into preview environments unless preview email delivery is intended.
+
+The [authenticated ingestion design](docs/AUTHENTICATED-INGESTION.md) defines private collection, gateway credentials, device authorization, validation, durable storage, retries, and restricted public exports. It is a design, not an enabled data endpoint.
 
 See [Pages function bindings](https://developers.cloudflare.com/pages/functions/bindings/) and [Resend's email API](https://resend.com/docs/api-reference/emails/send-email). A Python static preview can display the form but cannot send messages.
 
