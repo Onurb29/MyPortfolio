@@ -19,7 +19,8 @@
 }
 body, .lab-body { background: var(--bg); color: var(--ink); }
 body::before, .lab-body::before {
-  background: radial-gradient(circle at 80% 0%,rgba(122,162,247,.06),transparent 35%);
+  background: radial-gradient(ellipse at 90% 0%,rgba(61,141,255,.16),transparent 45%),
+    radial-gradient(ellipse at 0% 65%,rgba(45,212,191,.06),transparent 40%);
 }
 ::selection { background: #364a82; color: #c0caf5; }
 a:focus-visible, button:focus-visible,
@@ -32,8 +33,11 @@ a:focus-visible, button:focus-visible,
 }
 .hero h1 { letter-spacing: normal; line-height: 1.08; font-weight: 600; }
 .hero h1 span { color: var(--blue); }
-.eyebrow, .num { color: var(--v); }
-.button.primary { color: var(--bg); background: var(--blue); border-color: var(--blue); }
+.eyebrow, .num { color: var(--mint); }
+.button.primary {
+  color: #121725; background: linear-gradient(115deg,#7aa2f7,#7dcfff);
+  border-color: var(--mint); box-shadow: 0 5px 24px rgba(72,145,255,.18);
+}
 .button.primary:hover { background: var(--mint); border-color: var(--mint); }
 .skip:focus { color: var(--bg); background: var(--mint); }
 .section { border-color: var(--line); }
@@ -116,3 +120,58 @@ a:focus-visible, button:focus-visible,
 .host-logo { width: 24px; height: 24px; margin-right: 8px; vertical-align: middle; filter: invert(1); }
 @media(max-width:640px) { .location-map { padding: 14px; } .location-map iframe { height: 300px; } }
 
+/* Industrial Tokyo Night: illuminated edges, cool surfaces, restrained amber. */
+.topbar { border-bottom-color: rgba(125,207,255,.32); }
+.mark, .lab-identity .mark {
+  background: linear-gradient(135deg,#263b60,#1a2337);
+  box-shadow: inset 0 0 16px rgba(125,207,255,.08);
+}
+.hero {
+  background: radial-gradient(ellipse at 100% 45%,rgba(55,139,236,.09),transparent 60%);
+}
+.signal {
+  border-left-color: var(--mint);
+  background: linear-gradient(100deg,rgba(125,207,255,.07),transparent);
+}
+.signal-row { border-color: rgba(125,207,255,.2); }
+.signal-row strong { color: var(--mint); }
+.signal-row:nth-child(2) strong { color: var(--blue); }
+.signal-row:nth-child(3) strong { color: var(--amber); }
+.section:nth-of-type(even) { background: rgba(20,25,40,.42); }
+.section-head h2 { padding-left: 18px; border-left: 3px solid var(--mint); }
+#work .section-head h2 { border-color: var(--blue); }
+#capabilities .section-head h2 { border-color: var(--amber); }
+.card, .case {
+  --surface-accent: var(--mint);
+  border-color: #384d69;
+  border-top: 2px solid var(--surface-accent);
+  background: linear-gradient(145deg,#28364b,#202536 75%);
+  box-shadow: 0 12px 28px rgba(8,12,24,.15);
+}
+.card:nth-child(2), .case:nth-child(2) { --surface-accent: var(--blue); }
+.card:nth-child(3), .case:nth-child(3) { --surface-accent: var(--amber); }
+.case:nth-child(4) { --surface-accent: #73daca; }
+.card .num { color: var(--surface-accent); }
+.case .tag { color: var(--surface-accent); border-color: #4c607c; background: #192536; }
+.skill { color: var(--mint); border-color: #355870; background: #202f42; }
+.skill:nth-child(3n+2) { color: #adc4ff; border-color: #44567f; background: #252d45; }
+.skill:nth-child(3n) { color: #e7bd80; border-color: #625442; background: #302c2b; }
+.social-links a { background: #202c40; border-color: #3e5675; }
+.contact-links a { border-color: rgba(125,207,255,.28); }
+.contact-links a:hover { color: var(--mint); }
+.location-map { background: linear-gradient(145deg,#233348,#202536); border-color: #3a5e78; }
+.location-heading h3 { color: var(--mint); }
+.rail-link.active { box-shadow: inset 3px 0 var(--mint); color: var(--mint); background: #22334a; }
+.map-kicker, .detail-heading>p, .focus-card>span { color: var(--mint); }
+.architecture-map {
+  background-image: radial-gradient(rgba(125,207,255,.12) .7px,transparent .7px);
+  background-size: 24px 24px;
+}
+.nas-zone { border-color: #375775; background: linear-gradient(135deg,rgba(65,140,240,.1),rgba(35,56,76,.08)); }
+.map-node[aria-pressed="true"] { border-color: var(--mint); background: #263b52; box-shadow: 0 0 22px rgba(125,207,255,.13); }
+.node-detail { border-top-color: var(--mint); }
+.compute-zone { border-top-color: rgba(224,175,104,.6); }
+.pipeline article, .layer-grid article, .focus-card {
+  background: linear-gradient(145deg,#263449,#202536); border-color: #3c5574;
+}
+.pipeline b, .layer-grid b, .rule-list b { color: var(--amber); }
