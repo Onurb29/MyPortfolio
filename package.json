@@ -2,7 +2,7 @@
   "name": "jimmy-perron-portfolio-checks",
   "private": true,
   "scripts": {
-    "check": "node --check wwwroot/app.js && node --check wwwroot/architecture.js && python3 scripts/check_site.py",
+    "check": "node --check wwwroot/app.js && node --check wwwroot/architecture.js && node --check wwwroot/contact.js && python3 scripts/check_site.py && node --test tests/functions/*.test.mjs",
     "test": "playwright test"
   },
   "devDependencies": {

@@ -36,3 +36,30 @@ test('homelab tabs, node details, connections and reset work', async ({ page }) 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
 });
+
+test('contact form validates, sends, and keeps text when delivery fails', async ({ page }) => {
+  await page.clock.install();
+  await page.goto('/');
+  let requests = 0;
+  let fail = true;
+  await page.route('**/api/contact', async route => {
+    requests++;
+    expect(route.request().postDataJSON().email).toBe('visitor@example.com');
+    await route.fulfill({ status: fail ? 503 : 200, contentType: 'application/json', body: JSON.stringify({ message: fail ? 'Unavailable' : 'Message sent successfully.' }) });
+  });
+  await page.getByRole('button', { name: 'Send Message', exact: true }).click();
+  expect(requests).toBe(0);
+  await page.getByLabel('Full Name', { exact: true }).fill('Test Visitor');
+  await page.getByLabel('Email Address', { exact: true }).fill('visitor@example.com');
+  await page.getByLabel('Subject', { exact: true }).fill('Project enquiry');
+  await page.getByLabel('Message', { exact: true }).fill('I would like to discuss a project.');
+  await page.clock.fastForward(3000);
+  await page.getByRole('button', { name: 'Send Message', exact: true }).click();
+  await expect(page.getByRole('status')).toContainText('could not be sent');
+  await expect(page.getByLabel('Message', { exact: true })).toHaveValue('I would like to discuss a project.');
+  fail = false;
+  await page.getByRole('button', { name: 'Send Message', exact: true }).click();
+  await expect(page.getByRole('status')).toContainText('sent successfully');
+  await expect(page.getByLabel('Message', { exact: true })).toHaveValue('');
+  expect(requests).toBe(2);
+});
