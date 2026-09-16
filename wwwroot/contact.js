@@ -5,9 +5,31 @@
   const button = form.querySelector('[type="submit"]');
   let started = Date.now();
   let pending = false;
+  let widget;
+  const setup = fetch('/api/contact', { cache: 'no-store', signal: AbortSignal.timeout(5000) })
+    .then(response => response.json()).then(config => {
+      if (!config.siteKey) return;
+      const container = document.createElement('div');
+      button.before(container);
+      return new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => reject(new Error('Verification unavailable')), 10000);
+        const script = document.createElement('script');
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        script.onload = () => {
+          clearTimeout(timeout);
+          widget = window.turnstile.render(container, { sitekey: config.siteKey, action: 'contact', theme: 'dark', size: 'flexible' });
+          resolve();
+        };
+        script.onerror = () => { clearTimeout(timeout); reject(new Error('Verification unavailable')); };
+        document.head.append(script);
+      });
+    }).catch(() => { /* Server still enforces verification if configured. */ });
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (pending || !form.reportValidity()) return;
+    pending = true;
+    await setup;
+    pending = false;
     const data = Object.fromEntries(new FormData(form));
     for (const key of Object.keys(data)) data[key] = data[key].trim();
     data.formDurationMs = Math.min(Date.now() - started, 600000);
@@ -41,6 +63,7 @@
       pending = false;
       button.disabled = false;
       form.removeAttribute('aria-busy');
+      if (widget !== undefined) window.turnstile.reset(widget);
     }
   });
 })();

@@ -93,8 +93,8 @@ app.MapPost("/api/contact", async (
         var errorText = await response.Content.ReadAsStringAsync();
         logger.LogError("Resend API error: {StatusCode} - {Error}", (int)response.StatusCode, errorText);
         return Results.Json(
-            new { message = "Email provider rejected the request.", detail = errorText },
-            statusCode: (int)response.StatusCode
+            new { message = "Unable to send your message right now. Please try again later." },
+            statusCode: StatusCodes.Status502BadGateway
         );
     }
     catch (Exception ex)

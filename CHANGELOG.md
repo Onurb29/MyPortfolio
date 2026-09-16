@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-16 — Security hardening and ingestion design
+
+- Added bounded per-isolate contact throttling, stricter request checks, optional server-verified Turnstile, and generic .NET provider errors.
+- Added CSP and browser security headers for static and function responses, with browser tests under CSP.
+- Removed exact public software versions and service ports; revalidate architecture and contact scripts.
+- Documented remaining Turnstile/edge-rate-limit account setup and designed private authenticated ingestion without deploying an ingestion API.
+
 ## 2026-09-16 — Restore contact form
 
 - Restored Full Name, Email Address, Subject, Message, and Send Message in the Tokyo Night theme.
