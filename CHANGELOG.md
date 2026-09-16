@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-16 — Tokyo Night icon colors
+
+- Replaced white icon tiles and monochrome social icons with Tokyo Night blue, cyan, teal, amber, orange, and violet accents.
+- Matched diagram icon borders and labels to each technology's theme color while retaining labels and interactions.
+
 ## 2026-09-16 — Vibrant industrial palette
 
 - Enriched both pages with blue/cyan lighting, subtle diagram grid lines, and restrained amber accents.
