@@ -1,3 +1,5 @@
+import { securityHeaders, createContactLimiter } from '../../server/security.mjs';
+
 const unavailable = 'Messages are temporarily unavailable. Please contact me on LinkedIn.';
 const json = (status, message) => Response.json({ message }, { status, headers: { 'Cache-Control': 'no-store' } });
 const configured = env => ['RESEND_API_KEY', 'RESEND_FROM_EMAIL', 'RESEND_TO_EMAIL'].every(key => typeof env[key] === 'string' && env[key].trim());
@@ -78,4 +80,3 @@ export async function onRequest({ request, env }) {
   headers.set('Cache-Control', 'no-store');
   return new Response(response.body, { status: response.status, headers });
 }
-import { securityHeaders, createContactLimiter } from '../../server/security.mjs';

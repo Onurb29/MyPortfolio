@@ -10,6 +10,13 @@ const env = { RESEND_API_KEY: 'test-only', RESEND_FROM_EMAIL: 'site@example.com'
 const request = data => new Request('https://example.com/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: 'https://example.com' }, body: JSON.stringify(data) });
 const neverSend = () => { throw new Error('Email provider must not be called'); };
 
+test('public homelab does not disclose internal hostnames or software versions', () => {
+  for (const path of ['architecture.js', 'homelab/index.html']) {
+    const text = readFileSync(new URL(`../../wwwroot/${path}`, import.meta.url), 'utf8');
+    assert.doesNotMatch(text, /AlloyEngine|nas-01|Ubuntu(?: Server)? \d|MariaDB \d|NVIDIA driver \d|Docker Engine \d|port \d/i);
+  }
+});
+
 test('valid message sends only to the configured recipient', async () => {
   let calls = 0;
   const response = await handleContact(request({ ...valid, to: 'attacker@example.com' }), env, async (url, options) => {
