@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-16 — Portfolio refresh and CI
+
+- Published the Tokyo Night portfolio and interactive homelab, with social icons, technology marks, and the Terrace map.
+- Replaced device hostnames with NAS and AI Server; clarified SCADA integration, data acquisition and validation, and contact wording.
+- Replaced obsolete website tests with current HTTP and contact-validation checks; removed the broken starter test project and populated the XML solution.
+- Added frontend asset/link checks and desktop/mobile browser tests.
+- Added GitHub Actions jobs named Frontend checks and Backend tests for pull requests and main pushes.
+- Documented development, release, rollback, and required main protection settings. Branch protection requires a separate repository-settings change.
+
 ## [1.0.0] - Initial Portfolio Implementation
 
 ### Added

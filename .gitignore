@@ -47,3 +47,5 @@ secrets.json
 
 ## Node (if you ever add frontend tooling)
 node_modules/
+test-results/
+playwright-report/
