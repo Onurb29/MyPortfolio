@@ -1,107 +1,44 @@
-# Jimmy Perron — Industrial Systems Portfolio
+# Jimmy Perron — Industrial Systems
 
-Portfolio and experimental platform for building and showcasing practical solutions in industrial technology, data analysis, and manufacturing systems.
+Source for [jimmyperron.com](https://jimmyperron.com), featuring the portfolio and interactive Homelab Operations Portal in the Tokyo Night theme.
 
-Built with ASP.NET Core and a custom frontend to demonstrate how software can directly support operations, improve visibility, and reduce friction in production environments.
+## Frontend
 
-## 🌐 Live Preview
+The complete, dependency-free HTML/CSS/JavaScript site lives in `wwwroot/`:
 
-> Coming soon
+- `index.html`: portfolio, social links, contact information, and Terrace map.
+- `homelab/index.html`: interactive architecture diagram and platform details.
+- `architecture.js` / `architecture.css`: diagram connections and node interactions.
+- `app.js`: homelab navigation.
+- `tokyo-night.css`: shared theme and responsive refinements.
+- `logos/`: local technology and social icons, with source attribution in `SOURCES.txt`.
 
-## 🚀 Overview
+No npm install or frontend build is needed. Preview locally:
 
-This portfolio highlights:
+```sh
+python3 -m http.server 8000 --directory wwwroot
+```
 
-- Industrial systems experience (MES, SCADA, data analysis)
-- Real-world problem solving in manufacturing environments
-- Frontend development (HTML, CSS, JavaScript)
-- Backend hosting with ASP.NET Core
+Open `http://localhost:8000` and `http://localhost:8000/homelab/`.
 
-The goal is simple: build tools and systems that actually help operations run better.
+## Cloudflare Pages
 
-## 🧱 Architecture
+The repository is connected to Cloudflare Pages. Pushes to the production branch `main` trigger deployment. The static publish directory is `wwwroot`; the frontend needs no build command. Keep the existing Cloudflare project and custom-domain settings for `jimmyperron.com`.
 
-\`\`\`
-ASP.NET Core (Backend)
-├── Serves static frontend (wwwroot/)
-├── Provides API endpoints
-│
-Frontend (HTML/CSS/JS)
-├── Responsive layout
-├── Interactive UI (filtering, lightbox, form validation)
-└── Portfolio content
-\`\`\`
+Cloudflare deployment status appears in the commit's **Cloudflare Pages** check. No Cloudflare tokens or account secrets are included in this repository.
 
-## ⚙️ Features
+## Optional ASP.NET Core host
 
-### Frontend
-- Responsive layout for desktop and mobile
-- Navigation with smooth scrolling
-- Project filtering by category
-- Lightbox modal for project images
-- Contact form with validation
-- CSS Grid-based form layout
+The existing .NET 9 project, API endpoints, and tests are retained:
 
-### Backend
-- ASP.NET Core minimal setup
-- Static file hosting (`wwwroot`)
-- Sample API endpoint: `GET /api/hello`
+```sh
+dotnet run --project MyPortfolio.csproj
+```
 
-## 📁 Project Structure
+`Program.cs` serves `wwwroot` and provides `GET /api/hello` and `POST /api/contact`. The redesigned static frontend uses direct email and social links; it does not call the contact API. Cloudflare Pages static hosting does not execute the .NET backend.
 
-\`\`\`
-MyPortfolio/
-├── wwwroot/           # Frontend (HTML, CSS, JS, images)
-├── Program.cs         # ASP.NET Core entry point
-├── MyPortfolio.csproj # Project configuration
-├── tests/             # Unit tests
-├── README.md
-├── CHANGELOG.md
-└── LICENSE
-\`\`\`
+For a separate .NET deployment using the contact endpoint, configure `Resend:ApiKey`, `Resend:FromEmail`, and `Resend:ToEmail` through environment configuration or local user-secrets. Never commit credentials.
 
-## 🛠️ Tech Stack
+## License and assets
 
-- **Backend:** ASP.NET Core (.NET 9)
-- **Frontend:** HTML5, CSS3, JavaScript (vanilla)
-- **Architecture:** Static hosting + lightweight API
-- **Version Control:** Git
-
-## ▶️ Getting Started
-
-### Prerequisites
-- .NET SDK (`net9.0`)
-
-### Run locally
-
-\`\`\`bash
-dotnet run --project ./MyPortfolio.csproj
-\`\`\`
-
-Then open: `https://localhost:####/` (check terminal for actual port)
-
-### Build
-
-\`\`\`bash
-dotnet restore ./MyPortfolio.sln
-dotnet build ./MyPortfolio.sln -v minimal
-\`\`\`
-
-### Contact email setup (Resend + user-secrets)
-
-Use user-secrets for local credentials (do not store API keys in `appsettings.json`):
-
-\`\`\`bash
-dotnet user-secrets set "Resend:ApiKey" "..."
-dotnet user-secrets set "Resend:FromEmail" "onboarding@resend.dev"
-dotnet user-secrets set "Resend:ToEmail" "jim.perron@outlook.com"
-\`\`\`
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-- GitHub: https://github.com/Onurb29
-- LinkedIn: https://www.linkedin.com/in/jimmy-perron-ba9580173/
+Project code is covered by the existing MIT license. Third-party marks remain the property of their respective owners; icon sources and usage notes are recorded in `wwwroot/logos/SOURCES.txt`. The embedded map credits OpenStreetMap contributors.
