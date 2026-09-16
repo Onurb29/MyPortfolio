@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-16 — Vibrant industrial palette
+
+- Enriched both pages with blue/cyan lighting, subtle diagram grid lines, and restrained amber accents.
+- Added clearer surface contrast and colored section/card details without changing the hero headline or its typography.
+- Preserved the contact form, embedded map, technology logos, and interactive homelab behavior.
+
 ## 2026-09-16 — Security hardening and ingestion design
 
 - Added bounded per-isolate contact throttling, stricter request checks, optional server-verified Turnstile, and generic .NET provider errors.
