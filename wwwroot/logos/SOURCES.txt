@@ -4,4 +4,4 @@ https://cdn.jsdelivr.net/npm/simple-icons@16.0.0/icons/
 LinkedIn: simple-icons@11.15.0/icons/linkedin.svg
 Brand names and marks remain the property of their respective owners.
 Icons identify technologies and profile destinations, not endorsements.
-
+Monochrome silhouettes are tinted with the site's Tokyo Night palette; these are theme colors, not official brand colors.
