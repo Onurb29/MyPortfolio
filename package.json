@@ -1,0 +1,11 @@
+{
+  "name": "jimmy-perron-portfolio-checks",
+  "private": true,
+  "scripts": {
+    "check": "node --check wwwroot/app.js && node --check wwwroot/architecture.js && python3 scripts/check_site.py",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2"
+  }
+}

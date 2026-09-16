@@ -1,2 +1,6 @@
 <Solution>
+  <Project Path="MyPortfolio.csproj" />
+  <Folder Name="/tests/">
+    <Project Path="tests/MyPortfolio.Tests/MyPortfolio.Tests.csproj" />
+  </Folder>
 </Solution>

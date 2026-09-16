@@ -27,6 +27,10 @@ The repository is connected to Cloudflare Pages. Pushes to the production branch
 
 Cloudflare deployment status appears in the commit's **Cloudflare Pages** check. No Cloudflare tokens or account secrets are included in this repository.
 
+## Development checks and releases
+
+See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for local tests, the pull-request workflow, required branch protection, and recovery steps. GitHub Actions runs frontend checks and backend tests on pull requests to `main` and pushes to `main`.
+
 ## Optional ASP.NET Core host
 
 The existing .NET 9 project, API endpoints, and tests are retained:
