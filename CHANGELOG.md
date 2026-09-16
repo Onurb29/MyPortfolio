@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-16 — Restore contact form
+
+- Restored Full Name, Email Address, Subject, Message, and Send Message in the Tokyo Night theme.
+- Added validation, accessible status feedback, duplicate-submit prevention, and preservation of entered text on failure.
+- Added a Cloudflare Pages contact endpoint using server-side Resend configuration; the existing .NET endpoint remains available for .NET hosting.
+- Added browser submission tests and mocked function tests. Real email delivery requires Cloudflare secrets and sender configuration.
+
 ## 2026-09-16 — Portfolio refresh and CI
 
 - Published the Tokyo Night portfolio and interactive homelab, with social icons, technology marks, and the Terrace map.
