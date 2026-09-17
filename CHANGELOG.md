@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-17 — Featured homelab invitation
+
+- Made the homelab the primary hero invitation with a Tokyo Night green panel, connected sensor/data/AI icons, and explanatory text.
+- Added whole-panel navigation, hover and keyboard focus emphasis; moved the quieter outlined work link below it.
+- Preserved the main headline and typography.
+
 ## 2026-09-16 — Tokyo Night icon colors
 
 - Replaced white icon tiles and monochrome social icons with Tokyo Night blue, cyan, teal, amber, orange, and violet accents.
